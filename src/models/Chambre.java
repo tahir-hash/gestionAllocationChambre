@@ -2,11 +2,12 @@ package models;
 
 public class Chambre {
     private int id;
-    private int numero;
-    private String etage;
+    private String numero;
+    private EnumEtage etage;
     private TypeChambre type;
     private Pavillon pavillon;
-    private ResponsablePavillon  rp; 
+    private ResponsablePavillon rp;
+
     public ResponsablePavillon getRp() {
         return rp;
     }
@@ -31,19 +32,19 @@ public class Chambre {
         this.type = type;
     }
 
-    public String getEtage() {
+    public EnumEtage getEtage() {
         return etage;
     }
 
-    public void setEtage(String etage) {
+    public void setEtage(EnumEtage etage) {
         this.etage = etage;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
@@ -60,5 +61,5 @@ public class Chambre {
         return "Chambre [etage=" + etage + ", id=" + id + ", numero=" + numero + ", pavillon=" + pavillon + ", rp=" + rp
                 + ", type=" + type + "]";
     }
-    
+
 }
