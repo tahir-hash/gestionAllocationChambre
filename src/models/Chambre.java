@@ -1,5 +1,7 @@
 package models;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Chambre {
     private int id;
     private String numero;
@@ -7,7 +9,12 @@ public class Chambre {
     private TypeChambre type;
     private Pavillon pavillon;
     private ResponsablePavillon rp;
+    private static final AtomicInteger COUNT= new AtomicInteger(1);
 
+    public Chambre()
+    {
+        id= COUNT.getAndIncrement();
+    }
     public ResponsablePavillon getRp() {
         return rp;
     }
