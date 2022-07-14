@@ -10,7 +10,7 @@ import models.Pavillon;
 public interface IService {
     public void ajouterPavillon(Pavillon pavillon);
 
-    public int getPositionPavillon(int id);
+    public Pavillon getPavillonById(int id);
 
     public void supprimerPavillon(Pavillon pavillon);
 

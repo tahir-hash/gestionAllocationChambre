@@ -1,17 +1,18 @@
 package models;
 
-import java.util.concurrent.atomic.AtomicInteger;
+//import java.util.concurrent.atomic.AtomicInteger;
 
 public class Pavillon {
     private int id;
     private int nbrEtage;
     private int numero;
     private ResponsablePavillon  rp; 
-    private static final AtomicInteger COUNT= new AtomicInteger(1);
-
+  //  private static final AtomicInteger COUNT= new AtomicInteger(1);
+    private static int nbr=0;
     public Pavillon()
     {
-        id= COUNT.getAndIncrement();
+        nbr++;
+        id= nbr;
     }
     public ResponsablePavillon getRp() {
         return rp;

@@ -3,11 +3,14 @@ import java.util.Scanner;
 import Services.IService;
 import Services.ServiceTableau;
 import models.Chambre;
+import models.EnumEtage;
 import models.Pavillon;
+import models.TypeChambre;
 
 public class App {
     public static void main(String[] args) throws Exception {
 
+        // IService service = new ServiceList(new ArrayList<>(),new ArrayList<>());
         IService service = new ServiceTableau();
         int choix = 1;
         Scanner sc = new Scanner(System.in);
@@ -38,13 +41,26 @@ public class App {
                     service.listerPavillon();
                     break;
                 case 3:
-                    service.listerPavillon();
                     Chambre chambre = new Chambre();
-                    System.out.println("Veuillez saisir le numero d'id");
+                    System.out.println("Veuillez choisir un pavillon");
+                    service.listerPavillon();
                     int idPavillon = sc.nextInt();
-                    pavillon = new Pavillon();
-                    pavillon.setId(idPavillon);
-                    chambre.setPavillon(pavillon);
+                    pavillon = service.getPavillonById(idPavillon);
+                    if (pavillon != null) {
+                        chambre.setPavillon(pavillon);
+                        System.out.println("Veuillez choisir le type de chambre \n 1" + TypeChambre.values()[0] + "\n 2"
+                                + TypeChambre.values()[1]);
+                        int type = sc.nextInt();
+                        if (type == 1) {
+                            chambre.setType(TypeChambre.values()[0]);
+                        } else if (type == 2) {
+                            chambre.setType(TypeChambre.values()[1]);
+                        }
+                        service.ajouterChambre(chambre);
+                    } else {
+                        System.out.println("Pavillon indisponible");
+
+                    }
                     break;
                 case 4:
                     service.listerChambre();
@@ -55,9 +71,10 @@ public class App {
                 case 6:
                     System.out.println("1- Chambre");
                     break;
-                case 0:
-                    System.out.println("1- Chambre");
+                default:
+                    System.out.println("Veuillez saisir un numero valide");
                     break;
+
             }
         } while (choix != 0);
         /*
@@ -77,4 +94,5 @@ public class App {
          * service.listerChambre();
          */
     }
+
 }

@@ -10,85 +10,80 @@ public class ServiceTableau implements IService {
     private Chambre chambres[] = new Chambre[NOMBRE];
     private int indexChambre = 0;
     private Pavillon pavillons[] = new Pavillon[NOMBRE];
-    
-    public Pavillon[] getPavillons() {
-        return pavillons;
-    }
 
     private int indexPavillon = 0;
-    
-    
+
     @Override
     public void ajouterChambre(Chambre chambre) {
-        
-        if(indexChambre < NOMBRE){
+
+        if (indexChambre < NOMBRE) {
             chambres[indexChambre] = chambre;
             indexChambre++;
-       }
-       else{
+        } else {
             System.out.println("Le tableau est rempli");
-       }
+        }
     }
 
     @Override
     public void ajouterEtudiant(Etudiant etudiant) {
-        
-        
+
     }
 
     @Override
     public void ajouterPavillon(Pavillon pavillon) {
-        if(indexPavillon < NOMBRE){
+        if (indexPavillon < NOMBRE) {
             pavillons[indexPavillon] = pavillon;
             indexPavillon++;
-       }
-       else{
+        } else {
             System.out.println("Le tableau est rempli");
-       }
+        }
     }
 
     @Override
     public void archiverChambre(int id) {
-        
-        
+
     }
 
     @Override
     public int getPositionChambre(int id) {
-        
+
         return 0;
     }
 
     @Override
-    public int getPositionPavillon(int id) {
-        
-        return 0;
+    public Pavillon getPavillonById(int id) {
+        Pavillon pavillon = null;
+        for (Pavillon p : pavillons) {
+            if (p != null && p.getId() == id) {
+                pavillon = p;
+            }
+        }
+        return pavillon;
     }
 
     @Override
     public void listerChambre() {
         for (Chambre chambre : chambres) {
-            if(chambre != null){
+            if (chambre != null) {
                 System.out.println(chambre);
             }
         }
-        
+
     }
 
     @Override
     public void listerPavillon() {
         for (Pavillon pavillon : pavillons) {
-            if(pavillon != null){
+            if (pavillon != null) {
                 System.out.println(pavillon);
             }
         }
-        
+
     }
 
     @Override
     public void supprimerPavillon(Pavillon pavillon) {
-        
-        
+
     }
-    
+
 }
