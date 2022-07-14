@@ -1,17 +1,21 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Services.IService;
-import Services.ServiceTableau;
+import Services.ServiceList;
 import models.Chambre;
-import models.EnumEtage;
+import models.Etudiant;
+//import models.EnumEtage;
 import models.Pavillon;
 import models.TypeChambre;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class App {
     public static void main(String[] args) throws Exception {
 
-        // IService service = new ServiceList(new ArrayList<>(),new ArrayList<>());
-        IService service = new ServiceTableau();
+        IService service = new ServiceList(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
+        // IService service = new ServiceTableau();
         int choix = 1;
         Scanner sc = new Scanner(System.in);
         do {
@@ -22,7 +26,10 @@ public class App {
             System.out.println("3- Ajouter Chambre");
             System.out.println("4- Lister Chambre");
             System.out.println("5- archiver Chambre");
-            System.out.println("6- Ajouter Etudiant");
+            System.out.println("6- Supprimer Pavillon");
+            System.out.println("7- Ajouter etudiant");
+            System.out.println("8- Lister etudiant");
+
             System.out.println("0- Quitter");
             choix = sc.nextInt();
 
@@ -66,10 +73,37 @@ public class App {
                     service.listerChambre();
                     break;
                 case 5:
-                    System.out.println("1- Chambre");
+                    System.out.println("Veuillez choisir une chambre à archiver");
+                    service.listerChambre();
+                    int idChambre = sc.nextInt();
+                    service.archiverChambre(idChambre);
                     break;
                 case 6:
-                    System.out.println("1- Chambre");
+                    System.out.println("veuillez saisir l'id du pavillon à supprimer");
+                    service.listerPavillon();
+                    int id = sc.nextInt();
+                    pavillon = service.getPavillonById(id);
+                    service.supprimerPavillon(pavillon);
+                    break;
+                case 7:
+                    Etudiant etudiant = new Etudiant();
+                    System.out.println("Veuillez saisir le nom complet de l'etudiant");
+                    String nomcomplet = sc.next();
+                    System.out.println("Veuillez saisir l'email");
+                    String email = sc.next();
+                    System.out.println("Veuillez saisir le numero telephone de l'etudiant");
+                    String tel = sc.next();
+                    System.out.println("Veuillez saisir la dateNaissance de l'etudiant format jj/mm//yy");
+                    String dateN = sc.next();
+                    Date date = new SimpleDateFormat("dd/MM/yyyy").parse(dateN);
+                    etudiant.setNomComplet(nomcomplet);
+                    etudiant.setEmail(email);
+                    etudiant.setTelephone(tel);
+                    etudiant.setDateNaissance(date);
+                    service.ajouterEtudiant(etudiant);
+                    break;
+                case 8:
+                    service.listerEtudiant();
                     break;
                 default:
                     System.out.println("Veuillez saisir un numero valide");

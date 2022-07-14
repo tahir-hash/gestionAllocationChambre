@@ -16,11 +16,13 @@ public interface IService {
 
     public void listerPavillon();
 
+    public void listerEtudiant();
+
     public void ajouterChambre(Chambre chambre);
 
     public void listerChambre();
 
-    public int getPositionChambre(int id);
+    public Chambre getPositionChambre(int id);
 
     public void archiverChambre(int id);
 

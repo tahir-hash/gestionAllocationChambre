@@ -1,13 +1,24 @@
 package models;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Etudiant extends Personne {
+   
+
+    @Override
+    public String toString() {
+        return "Etudiant [dateNaissance=" + dateNaissance + ", email=" + email + ", matricule=" + matricule
+                + ", telephone=" + telephone + "]";
+    }
+
     private String matricule;
     private String email;
     private String telephone;
     private Date dateNaissance;
-    
+    public Etudiant()
+    {
+        matricule= "MAT--"+id;
+    }
     public Date getDateNaissance() {
         return dateNaissance;
     }

@@ -45,9 +45,10 @@ public class ServiceTableau implements IService {
     }
 
     @Override
-    public int getPositionChambre(int id) {
+    public Chambre getPositionChambre(int id) {
 
-        return 0;
+       Chambre chambre = new Chambre();
+       return chambre;
     }
 
     @Override
@@ -85,5 +86,8 @@ public class ServiceTableau implements IService {
     public void supprimerPavillon(Pavillon pavillon) {
 
     }
-
+    @Override
+    public void listerEtudiant() {
+        
+    }
 }

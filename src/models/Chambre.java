@@ -9,11 +9,22 @@ public class Chambre {
     private TypeChambre type;
     private Pavillon pavillon;
     private ResponsablePavillon rp;
+    private String etat;
+
+    public String getEtat() {
+        return etat;
+    }
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
     private static final AtomicInteger COUNT= new AtomicInteger(1);
 
     public Chambre()
     {
         id= COUNT.getAndIncrement();
+        etat="DISPONIBLE";
+        numero= "ch000"+id;
     }
     public ResponsablePavillon getRp() {
         return rp;
@@ -62,11 +73,11 @@ public class Chambre {
     public void setId(int id) {
         this.id = id;
     }
-
     @Override
     public String toString() {
-        return "Chambre [etage=" + etage + ", id=" + id + ", numero=" + numero + ", pavillon=" + pavillon + ", rp=" + rp
-                + ", type=" + type + "]";
+        return "Chambre [etage=" + etage + ", etat=" + etat + ", id=" + id + ", numero=" + numero + ", pavillon="
+                + pavillon + ", rp=" + rp + ", type=" + type + "]";
     }
 
+    
 }
